@@ -1,1 +1,3 @@
-def feature_a(): pass
+def feature_a():
+    """Демонстрационная функция feature_a (заглушка)."""
+    pass
