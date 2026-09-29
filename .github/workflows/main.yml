@@ -26,3 +26,31 @@
 
          - name: Run tests
            run: pytest -v
+
+  docs:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pdoc
+        run: pip install pdoc
+
+      - name: Generate documentation
+        run: pdoc --output-dir docs feature_a feature_b feature_c
+
+      - name: Commit updated docs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: автообновление документации [skip ci]"
+          file_pattern: docs/**
