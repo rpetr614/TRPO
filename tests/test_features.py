@@ -23,3 +23,4 @@ def test_file1_script_runs_without_error():
     )
     assert result.returncode == 0
     assert "Hello from file1" in result.stdout
+    assert "Hello" in result.stdout
