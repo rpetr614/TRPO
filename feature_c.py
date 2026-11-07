@@ -1,6 +1,6 @@
 def feature_c():
     """Демонстрационная функция feature_c: возвращает строку-заглушку."""
-    return "feature_c работает"
+    return "feature_c сломана"
 
 
 def feature_c_extra():
